@@ -6,10 +6,20 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Event;
+use Comment;
 
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
+
+    public function events(){
+        return $this->belongsToMany(Event::class);
+    }
+    
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
