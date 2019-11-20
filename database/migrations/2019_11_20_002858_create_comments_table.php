@@ -20,6 +20,8 @@ class CreateCommentsTable extends Migration
             $table->date('date_time');
             $table->unsignedbigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedbigInteger('event_id');
+            $table->foreign('event_id')->references('id')->on('events');
             $table->timestamps();
         });
     }

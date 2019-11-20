@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use User;
+use Comment;
 
 class Event extends Model
 {
@@ -13,5 +14,8 @@ class Event extends Model
 
     public function users(){
         return $this->belongsToMany(User::class); 
+    }
+    public function commentsOfEvent(){
+        return $this->hasMany(Comment::class);
     }
 }
